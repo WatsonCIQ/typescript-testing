@@ -4,7 +4,7 @@ const { copy, mkdirp, access, constants, readJson, writeJson, remove } = require
 
 
 
-const configJSON = require("../config.json")
+const configJSON = require("../finsemble.config.json")
 
 const seedDirectory = path.join(configJSON.seedProjectDirectory)
 
@@ -41,7 +41,7 @@ function updateSeed(action, currentPath, message, seedDirectory) {
   const destDir = `${seedDirectory}`
   const destinationPath = path.join(destDir, currentPath)
 
-  if (currentPath === 'config.json') {
+  if (currentPath === 'finsemble.config.json') {
     try {
       updateConfig(seedDirectory, currentPath)
     } catch (error) {
