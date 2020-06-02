@@ -1,0 +1,49 @@
+{
+  "comment": "Component Config for hosted projects",
+  "components": {
+    "CodeSandbox": {
+      "window": {
+        "url": "https://csb-j3fh0.now.sh",
+        "options": {
+          "resizable": true,
+          "autoShow": true,
+          "alwaysOnTop": false
+        },
+        "top": "center",
+        "left": "center",
+        "width": 400,
+        "height": 432
+      },
+      "component": {
+        "displayName": "CodeSandbox Component",
+        "spawnOnStartup": false,
+        "preload": "$applicationRoot/preloads/zoom.js"
+      },
+      "foreign": {
+        "services": {
+          "windowService": {
+            "allowSnapping": true,
+            "allowGrouping": true,
+            "allowAutoArrange": true,
+            "allowMinimize": true
+          }
+        },
+        "components": {
+          "App Launcher": {
+            "launchableByUser": true
+          },
+          "Window Manager": {
+            "alwaysOnTopIcon": false,
+            "showLinker": true,
+            "FSBLHeader": true,
+            "persistWindowState": true,
+            "title": "Welcome to CodeSandbox"
+          },
+          "Toolbar": {
+            "iconClass": "ff-component"
+          }
+        }
+      }
+    }
+  }
+}
