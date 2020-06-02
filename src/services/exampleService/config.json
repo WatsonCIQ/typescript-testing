@@ -1,0 +1,11 @@
+{
+  "services": {
+    "exampleService": {
+      "useWindow": true,
+      "active": true,
+      "name": "exampleService",
+      "visible": false,
+      "html": "$applicationRoot/services/exampleService/exampleService.html"
+    }
+  }
+}

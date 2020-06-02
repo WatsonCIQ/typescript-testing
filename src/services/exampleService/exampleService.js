@@ -1,9 +1,8 @@
 const Finsemble = require("@chartiq/finsemble");
 
-const FDC3Client = require('../FDC3/FDC3Client').default
 const { log, error } = Finsemble.Clients.Logger
 Finsemble.Clients.Logger.start();
-Finsemble.Clients.Logger.log("TestFDC3 Service starting up");
+Finsemble.Clients.Logger.log("Example Service starting up");
 
 // Add and initialize any other clients you need to use (services are initialized by the system, clients are not):
 // Finsemble.Clients.AuthenticationClient.initialize();
@@ -24,7 +23,7 @@ Finsemble.Clients.WindowClient.initialize();
 /**
  * TODO: Add service description here
  */
-class testFDC3Service extends Finsemble.baseService {
+class exampleService extends Finsemble.baseService {
 	/**
 	 * Initializes a new instance of the TestFDC3Service class.
 	 */
@@ -35,8 +34,6 @@ class testFDC3Service extends Finsemble.baseService {
 				// If the service is using another service directly via an event listener or a responder, that service
 				// should be listed as a service start up dependency.
 				services: [
-					"FDC3",
-					"FDC3Service"
 					// "assimilationService",
 					// "authenticationService",
 					// "configService",
@@ -59,17 +56,16 @@ class testFDC3Service extends Finsemble.baseService {
 					// "dragAndDropClient",
 					// "hotkeyClient",
 					// "launcherClient",
-					"linkerClient",
+					// "linkerClient",
 					// "searchClient
 					// "storageClient",
-					"windowClient",
+					// "windowClient",
 					// "workspaceClient",
 				]
 			}
 		});
 
 		this.readyHandler = this.readyHandler.bind(this);
-		this.setUpFDC3 = this.setUpFDC3.bind(this);
 		this.onBaseServiceReady(this.readyHandler);
 
 	}
@@ -79,36 +75,11 @@ class testFDC3Service extends Finsemble.baseService {
 	 * @param {function} callback
 	 */
 	readyHandler(callback) {
-		this.createRouterEndpoints();
 		Finsemble.Clients.Logger.log("TestFDC3 Service ready");
-		this.setUpFDC3()
 		callback();
 
 	}
 
-	async setUpFDC3() {
-		log("hit FDC3Setup")
-		log(Finsemble.Clients.WindowClient.getWindowIdentifier())
-		try {
-			this.FDC3DesktopAgent = new FDC3Client(Finsemble)
-			this.FDC3 = await this.FDC3DesktopAgent.getOrCreateDesktopAgent('service')
-
-			const FDC3 = this.FDC3
-
-			const channelList = await FDC3.getSystemChannels()
-			log(FDC3)
-			log(channelList)
-			channelList[1].addContextListener((data) => {
-				log('listening to context on ' + channelList[1].id)
-				log(data)
-			})
-		} catch (err) {
-			error(err)
-		}
-
-		await log("complete FDC3Setup")
-
-	}
 	// Implement service functionality
 	myFunction(data) {
 		return `Data passed into query: \n${JSON.stringify(data, null, "\t")}`;
@@ -120,12 +91,12 @@ class testFDC3Service extends Finsemble.baseService {
 	 */
 	createRouterEndpoints() {
 		// Add responder for myFunction
-		Finsemble.Clients.RouterClient.addResponder("TestFDC3.myFunction", (err, message) => {
+		Finsemble.Clients.RouterClient.addResponder("exampleService.myFunction", (err, message) => {
 			if (err) {
-				return Finsemble.Clients.Logger.error("Failed to setup TestFDC3.myFunction responder", err);
+				return Finsemble.Clients.Logger.error("Failed to setup exampleService.myFunction responder", err);
 			}
 
-			Finsemble.Clients.Logger.log('TestFDC3 Query: ' + JSON.stringify(message));
+			Finsemble.Clients.Logger.log('exampleService Query: ' + JSON.stringify(message));
 
 			try {
 				// Data in query message can be passed as parameters to a method in the service.
@@ -141,7 +112,7 @@ class testFDC3Service extends Finsemble.baseService {
 	}
 }
 
-const serviceInstance = new testFDC3Service();
+const serviceInstance = new exampleService();
 
 serviceInstance.start();
 module.exports = serviceInstance;
