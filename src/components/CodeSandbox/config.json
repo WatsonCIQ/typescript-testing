@@ -1,9 +1,8 @@
 {
-  "comment": "Component Config for hosted projects",
   "components": {
     "CodeSandbox": {
       "window": {
-        "url": "https://csb-j3fh0.now.sh",
+        "url": "https://j3fh0.csb.app/",
         "options": {
           "resizable": true,
           "autoShow": true,
