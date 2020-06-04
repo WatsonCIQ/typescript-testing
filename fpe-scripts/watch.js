@@ -2,9 +2,11 @@ const chokidar = require('chokidar');
 const path = require("path");
 const { copy, mkdirp, access, constants, readJson, writeJson, remove } = require("fs-extra");
 
-
-
 const configJSON = require("../finsemble.config.json")
+
+
+const SRC_FOLDER = "./src"
+const FINSEMBLE_CONFIG = "finsemble.config.json"
 
 const seedDirectory = path.join(configJSON.seedProjectDirectory)
 
@@ -19,7 +21,7 @@ access(seedDirectory, constants.F_OK | constants.W_OK, (err) => {
 
 function beginWatch(seedDirectory) {
   // Initialize watcher.
-  const watcher = chokidar.watch(['./src', 'config.json'], {
+  const watcher = chokidar.watch([SRC_FOLDER, FINSEMBLE_CONFIG], {
     ignored: /(^|[\/\\])\../, // ignore dotfiles
     persistent: true
   });
@@ -41,7 +43,7 @@ function updateSeed(action, currentPath, message, seedDirectory) {
   const destDir = `${seedDirectory}`
   const destinationPath = path.join(destDir, currentPath)
 
-  if (currentPath === 'finsemble.config.json') {
+  if (currentPath === FINSEMBLE_CONFIG) {
     try {
       updateConfig(seedDirectory, currentPath)
     } catch (error) {
@@ -98,10 +100,3 @@ async function updateConfig(seedDirectory, currentFile) {
   }
 
 }
-
-// **Setup and point the config
-// add to the importConfig - this is an array, can either
-
-
-
-// Watch the file changes
