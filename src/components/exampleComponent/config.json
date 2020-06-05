@@ -1,9 +1,9 @@
 {
   "comment": "Sample component configuration",
   "components": {
-    "testComponent": {
+    "exampleComponent": {
       "window": {
-        "url": "$applicationRoot/components/testComponent/testComponent.html",
+        "url": "$applicationRoot/components/exampleComponent/exampleComponent.html",
         "options": {
           "resizable": true,
           "autoShow": true,
@@ -15,7 +15,6 @@
         "height": 600
       },
       "component": {
-        "preload": "$applicationRoot/preloads/FDC3Client.js",
         "spawnOnStartup": false,
         "singleton": false,
         "showDevConsoleOnVisible": false
@@ -38,11 +37,11 @@
           },
           "Window Manager": {
             "alwaysOnTopIcon": true,
-            "title": "testComponent",
+            "title": "exampleComponent",
             "persistWindowState": true
           },
           "Toolbar": {
-            "iconClass": "testComponent",
+            "iconClass": "exampleComponent",
             "iconURL": "http://localhost:3375/assets/img/Finsemble_Taskbar_Icon.png"
           }
         }
