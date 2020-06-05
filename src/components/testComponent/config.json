@@ -1,0 +1,52 @@
+{
+  "comment": "Sample component configuration",
+  "components": {
+    "testComponent": {
+      "window": {
+        "url": "$applicationRoot/components/testComponent/testComponent.html",
+        "options": {
+          "resizable": true,
+          "autoShow": true,
+          "alwaysOnTop": false
+        },
+        "top": "center",
+        "left": "center",
+        "width": 800,
+        "height": 600
+      },
+      "component": {
+        "preload": "$applicationRoot/preloads/FDC3Client.js",
+        "spawnOnStartup": false,
+        "singleton": false,
+        "showDevConsoleOnVisible": false
+      },
+      "foreign": {
+        "services": {
+          "windowService": {
+            "manageWindowMovement": true,
+            "allowAutoArrange": true,
+            "allowSnapping": true,
+            "allowTabbing": true,
+            "allowTiling": true,
+            "allowGrouping": true,
+            "allowMinimize": true
+          }
+        },
+        "components": {
+          "App Launcher": {
+            "launchableByUser": true
+          },
+          "Window Manager": {
+            "alwaysOnTopIcon": true,
+            "title": "testComponent",
+            "persistWindowState": true
+          },
+          "Toolbar": {
+            "iconClass": "testComponent",
+            "iconURL": "http://localhost:3375/assets/img/Finsemble_Taskbar_Icon.png"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "tester": {
+    "output": "preloads/examplePreload.js",
+    "entry": "./src/preloads/examplePreload/examplePreload.ts"
+  }
+}
